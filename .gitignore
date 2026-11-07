@@ -1,0 +1,18 @@
+# 后端忽略
+system1/target/
+system1/.idea/
+*.iml
+*.log
+
+# 前端忽略
+system1_vue/node_modules/
+system1_vue/dist/
+system1_vue/.idea/
+
+# 环境变量与敏感文件
+.env
+.env.local
+# 根目录下所有 .idea
+.idea/
+**/.idea/
+*.iml

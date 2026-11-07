@@ -1,0 +1,44 @@
+# 应用服务 WEB 访问端口
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: system1
+
+  # PostgreSQL 配置
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+# 🔥 把原来的 JPA 和 Hibernate 配置全部删掉，换成 MyBatis-Plus
+mybatis-plus:
+  configuration:
+    # 开启下划线转驼峰命名（数据库的 student_id 自动映射到 Java 的 studentId）
+    map-underscore-to-camel-case: true
+    # 在控制台打印 SQL 语句，方便你调试
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 全局设置主键类型为数据库自增
+      id-type: auto
+
+# JWT 配置
+system1:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 86400000
+
+# 嵌入Api
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY}
+  api-url: https://api.deepseek.com/v1/chat/completions
+
+# 嵌入腾讯云的语音识别
+tencent:
+  asr:
+    secret-id: ${TENCENT_SECRET_ID}
+    secret-key: ${TENCENT_SECRET_KEY}
+  tts:
+    app-id: ${TENCENT_APP_ID}
